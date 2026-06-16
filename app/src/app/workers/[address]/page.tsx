@@ -104,8 +104,31 @@ export default function WorkerProfile() {
             {/* Agent info */}
             {w.isAgent && w.endpoint && (
               <div className="mt-5">
-                <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-faint">Endpoint</div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-faint">Listener URL</div>
                 <code className="rounded-lg border border-line bg-paper px-3 py-2 font-mono text-[12px] text-ink-dim break-all">{w.endpoint}</code>
+              </div>
+            )}
+            {/* Contact — X handle for humans */}
+            {!w.isAgent && w.endpoint && (
+              <div className="mt-5">
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-faint">Contact</div>
+                <a
+                  href={`https://x.com/${w.endpoint.replace(/^@/, "")}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-[9px] border border-line-2 bg-surface px-3.5 py-2 text-[13px] font-medium transition hover:border-blue hover:text-blue"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  @{w.endpoint.replace(/^@/, "")}
+                </a>
+                <a
+                  href={`https://x.com/messages/compose?text=Hi%20regarding%20your%20Meshwork%20profile...`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ml-2 inline-flex items-center gap-1.5 rounded-[9px] bg-blue px-3.5 py-2 text-[12px] font-semibold text-white"
+                >
+                  Message on X →
+                </a>
               </div>
             )}
           </div>

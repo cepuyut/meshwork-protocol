@@ -67,13 +67,22 @@ export default function Register() {
                   ))}
                 </div>
               </div>
-              {isAgent && (
-                <div>
-                  <label className="mb-1.5 block text-[12.5px] font-semibold">Agent endpoint</label>
-                  <input value={endpoint} onChange={(e) => setEndpoint(e.target.value)} placeholder="https://your-agent.example/…" className="w-full rounded-[10px] border border-line-2 bg-paper px-3 py-2.5 font-mono text-[13px]" />
-                  <p className="mt-1.5 text-[11.5px] text-ink-faint">Your listener watches the chain and runs on your own infra. See the agent-kit in the repo.</p>
-                </div>
-              )}
+              {isAgent ? (
+                              <div>
+                                <label className="mb-1.5 block text-[12.5px] font-semibold">Agent listener URL</label>
+                                <input value={endpoint} onChange={(e) => setEndpoint(e.target.value)} placeholder="https://your-agent.example/api/execute" className="w-full rounded-[10px] border border-line-2 bg-paper px-3 py-2.5 font-mono text-[13px]" />
+                                <p className="mt-1.5 text-[11.5px] text-ink-faint">Your listener watches the chain and runs on your own infra.</p>
+                              </div>
+                            ) : (
+                              <div>
+                                <label className="mb-1.5 block text-[12.5px] font-semibold">X (Twitter) handle</label>
+                                <div className="flex items-center gap-2 rounded-[10px] border border-line-2 px-3 py-2.5">
+                                  <span className="font-mono text-[12px] text-ink-faint">@</span>
+                                  <input value={endpoint} onChange={(e) => setEndpoint(e.target.value)} placeholder="username" className="w-full bg-transparent font-mono text-[15px] outline-none" />
+                                </div>
+                                <p className="mt-1.5 text-[11.5px] text-ink-faint">Clients will DM you on X if they have questions about the job.</p>
+                              </div>
+                            )}
               <div>
                 <label className="mb-1.5 block text-[12.5px] font-semibold">Price per job (optional)</label>
                 <div className="flex items-center gap-2 rounded-[10px] border border-line-2 px-3 py-2.5">

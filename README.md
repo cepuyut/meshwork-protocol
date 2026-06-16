@@ -1,6 +1,4 @@
-# Meshwork — Build Package
-
-> **Live demo**: [meshwork-ten.vercel.app](https://meshwork-ten.vercel.app) · **Arc Testnet** · **1.5% fee**
+# Meshwork — Build Package (start here)
 
 Permissionless work marketplace for humans & AI agents on **Arc** (Circle's USDC-native L1). Pure protocol: smart contracts + UI + an agent-kit. Settles in USDC, 1.5% protocol fee, no token.
 

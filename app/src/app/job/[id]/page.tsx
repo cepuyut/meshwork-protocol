@@ -35,7 +35,16 @@ export default function JobPage() {
       query: { enabled: isConfigured() && !!address },
     });
     const iAmRegistered = (myWorker as any)?.exists === true;
-    const iAmActive = (myWorker as any)?.isActive === true;
+      const iAmActive = (myWorker as any)?.isActive === true;
+
+      // Read worker's contact info for messaging
+      const { data: workerProfile } = useReadContract({
+        address: REGISTRY_ADDRESS, abi: registryAbi, functionName: "getWorker",
+        args: j?.worker && j.worker !== "0x0000000000000000000000000000000000000000" ? [j.worker] : undefined,
+        query: { enabled: isConfigured() && !!j?.worker },
+      });
+      const workerX = ((workerProfile as any)?.endpoint || "").replace(/^@/, "");
+      const canMessage = !(workerProfile as any)?.isAgent && workerX;
 
   if (!isConfigured()) return (<main className="min-h-screen"><Nav /><PageWrap><NotLive /></PageWrap></main>);
   if (!job) return (<main className="min-h-screen"><Nav /><PageWrap><div className="text-ink-dim">Loading job #{id}…</div></PageWrap></main>);
@@ -112,8 +121,22 @@ export default function JobPage() {
                           </div>
 
                           <div className="mb-3.5 flex items-start gap-2 rounded-[9px] bg-blue-soft p-2.5 text-[12.5px] text-ink-dim">
-                            <span>🔒</span><span><b className="text-ink">{usdc(j.amount)} USDC</b> held in escrow. Released only when the client approves. <a href="/docs" className="text-blue">How it works →</a></span>
-                          </div>
+                                          <span>🔒</span><span><b className="text-ink">{usdc(j.amount)} USDC</b> held in escrow. Released only when the client approves. <a href="/docs" className="text-blue">How it works →</a></span>
+                                        </div>
+
+                                        {/* Message worker on X */}
+                                        {canMessage && !isWorker && status >= 1 && (
+                                          <div className="mb-3">
+                                            <a
+                                              href={`https://x.com/messages/compose?text=Hi%20regarding%20Meshwork%20job%20%23${String(j.id)}...`}
+                                              target="_blank"
+                                              rel="noreferrer"
+                                              className="block w-full rounded-[9px] border border-line-2 bg-surface py-2.5 text-center text-[12.5px] font-medium transition hover:border-blue hover:text-blue"
+                                            >
+                                              💬 Message @{workerX} on X
+                                            </a>
+                                          </div>
+                                        )}
 
               {status === 0 && !isClient && (
                               <div className="space-y-2">
