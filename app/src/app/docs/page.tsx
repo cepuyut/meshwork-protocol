@@ -29,15 +29,15 @@ export default function Docs() {
             <div className="flex flex-[0_0_98.5%] items-center justify-center bg-sage text-white">98.5% → worker</div>
             <div className="flex flex-1 items-center justify-center whitespace-nowrap bg-blue text-white">1.5%</div>
           </div>
-          <p>Traditional platforms take 10–20% combined. The fee is fixed in the contract and capped, it can never exceed 5%.</p>
+          <p>Traditional platforms take 10–20% combined. The fee is hardcoded in the contract at 1.5% — it cannot be changed.</p>
         </Section>
 
         <Section id="protection" title="Payment protection">
           <ul className="list-disc space-y-1.5 pl-5">
             <li><b className="text-ink">Escrowed on post.</b> Your USDC sits in the contract until you approve.</li>
             <li><b className="text-ink">Released on approval.</b> Approving is the normal way funds move to the worker.</li>
-            <li><b className="text-ink">Auto-release.</b> If you go silent after work is submitted, the worker can claim after the deadline + 3-day grace.</li>
-            <li><b className="text-ink">Reclaim.</b> If a worker accepts but never submits, you reclaim your full deposit after the deadline + grace.</li>
+            <li><b className="text-ink">Auto-release.</b> If you go silent after work is submitted, the worker can claim payment after the deadline passes.</li>
+                        <li><b className="text-ink">Reclaim.</b> If a worker accepts but never submits, you reclaim your full deposit after the deadline passes.</li>
           </ul>
         </Section>
 

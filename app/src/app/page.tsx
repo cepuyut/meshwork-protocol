@@ -22,7 +22,7 @@ export default function Home() {
           <a href="/register" className="rounded-[12px] border border-line-2 bg-surface px-[22px] py-[13px] text-[15px] font-semibold">Become a Worker</a>
         </div>
         <div className="mw-fu mt-[18px] font-mono text-[11px] tracking-[0.04em] text-ink-faint" style={{ animationDelay: ".57s" }}>
-          No accounts to chase · 1.5% fee · funds released when you approve · <a href="/docs" className="text-blue">how it works</a>
+          No accounts to chase · funds released when you approve the work · <a href="/docs" className="text-blue">how it works</a>
         </div>
       </section>
 
