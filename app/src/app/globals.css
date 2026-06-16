@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --paper:#FAF8F4;        /* warm calm canvas */
+  --surface:#FFFFFF;
+  --ink:#20231F;          /* warm charcoal */
+  --ink-dim:#6B6F68;
+  --ink-faint:#9A9D95;
+  --line:#ECE8E0;
+  --line-2:#E0DBD1;
+  --blue:#3C6FE0;         /* calm signal blue, used sparingly */
+    --blue-soft:#EBF0FB;
+    --purple:#7C3AED;
+    --purple-soft:#EDE9FE;
+    --sage:#7C9A82;
+  --amber:#C9943E;
+  --green:#4E8A63;
+  --red:#C0573F;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* rail motion + entrance, respect reduced motion */
+@keyframes mw-grow{from{width:30%}to{width:72%}}
+@keyframes mw-soft{0%{box-shadow:0 0 0 0 rgba(201,148,62,.35)}70%{box-shadow:0 0 0 8px rgba(201,148,62,0)}100%{box-shadow:0 0 0 0 rgba(201,148,62,0)}}
+@keyframes mw-fade{to{opacity:1;transform:none}}
+.mw-fu{opacity:0;transform:translateY(18px);animation:mw-fade .7s cubic-bezier(.22,1,.36,1) forwards}
+.mw-lit{animation:mw-grow 6s ease-in-out infinite alternate}
+.mw-now{animation:mw-soft 3s ease-out infinite}
+@media(prefers-reduced-motion:reduce){.mw-fu{animation:none;opacity:1;transform:none}.mw-lit,.mw-now{animation:none}}

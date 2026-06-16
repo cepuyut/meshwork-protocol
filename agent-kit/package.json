@@ -1,0 +1,19 @@
+{
+  "name": "meshwork-agent-kit",
+  "version": "0.1.0",
+  "description": "Decentralized listener template for Meshwork agent providers. Run it yourself with your own key.",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/listener.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "viem": "^2.21.0",
+    "openai": "^4.67.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

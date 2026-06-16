@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meshwork — Logo Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1116;--ink-dim:#5A6068;--concrete:#F4F5F3;--surface:#FFFFFF;
+  --border:#E2E4E0;--signal:#2F6BFF;--green:#1F9D57;--red:#D6492E;
+  --sans:'Hanken Grotesk',system-ui,sans-serif;--mono:'Spline Sans Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--concrete);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:920px;margin:0 auto;padding:56px 24px 90px}
+.kick{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-dim)}
+h1{font-weight:800;font-size:clamp(32px,6vw,56px);letter-spacing:-.03em;margin:10px 0 0}
+h2{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--ink-dim);margin:0 0 16px}
+p{color:var(--ink-dim);max-width:62ch}
+section{padding:44px 0;border-top:1px solid var(--border)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:680px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+.stage{display:flex;align-items:center;justify-content:center;min-height:150px;padding:28px}
+.stage.dark{background:var(--ink)}
+.stage.blue{background:var(--signal)}
+.cap{padding:10px 14px;border-top:1px solid var(--border);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-dim)}
+.stage.dark + .cap{}
+.wm{font-weight:800;letter-spacing:-1.1px;font-size:30px}
+.row{display:flex;align-items:center;gap:14px}
+.fav{display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap}
+.favbox{text-align:center}
+.favbox .t{font-family:var(--mono);font-size:10px;color:var(--ink-dim);margin-top:8px}
+.tile{background:var(--ink);border-radius:22%;display:flex;align-items:center;justify-content:center}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:680px){.dos{grid-template-columns:1fr}}
+.do,.dont{border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--surface);font-size:14px}
+.do b{color:var(--green)}.dont b{color:var(--red)}
+.do ul,.dont ul{margin:8px 0 0;padding-left:18px}
+.do li,.dont li{margin:5px 0;color:var(--ink-dim)}
+footer{padding-top:30px;border-top:1px solid var(--border);color:var(--ink-dim);font-size:12.5px}
+code{font-family:var(--mono);font-size:12px;background:#eceeec;padding:1px 6px;border-radius:5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kick">Meshwork · Logo system · Direction A "Rails"</div>
+<h1>Logo guidelines</h1>
+<p>Lockup horizontal (mark + wordmark) sebagai logo utama. Mark = interchange node: tiga jalur menyatu ke satu titik settlement biru. Wordmark Hanken Grotesk 800, tracking -1.1.</p>
+
+<!-- PRIMARY + INVERTED -->
+<section>
+  <h2>Lockup — utama & inverted</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="stage">
+        <div class="row">
+          <svg width="52" height="52" viewBox="0 0 48 48" aria-label="mark">
+            <g fill="none" stroke="#0E1116" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/>
+              <path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/>
+            </g><circle cx="30" cy="24" r="4.2" fill="#2F6BFF"/>
+          </svg>
+          <span class="wm" style="color:#0E1116">Meshwork</span>
+        </div>
+      </div>
+      <div class="cap">Primary · ink on concrete</div>
+    </div>
+    <div class="card">
+      <div class="stage dark">
+        <div class="row">
+          <svg width="52" height="52" viewBox="0 0 48 48" aria-label="mark">
+            <g fill="none" stroke="#F4F5F3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/>
+              <path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/>
+            </g><circle cx="30" cy="24" r="4.2" fill="#2F6BFF"/>
+          </svg>
+          <span class="wm" style="color:#F4F5F3">Meshwork</span>
+        </div>
+      </div>
+      <div class="cap">Inverted · light on asphalt</div>
+    </div>
+  </div>
+</section>
+
+<!-- MONO -->
+<section>
+  <h2>Monochrome (1-warna)</h2>
+  <p>Untuk konteks 1 warna (stempel, watermark, print). Node biru boleh ikut ditiadakan.</p>
+  <div class="grid3">
+    <div class="card"><div class="stage"><svg width="44" height="44" viewBox="0 0 48 48"><g fill="none" stroke="#0E1116" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/><path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="4.2" fill="#0E1116"/></svg></div><div class="cap">Mono ink</div></div>
+    <div class="card"><div class="stage dark"><svg width="44" height="44" viewBox="0 0 48 48"><g fill="none" stroke="#F4F5F3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/><path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="4.2" fill="#F4F5F3"/></svg></div><div class="cap">Mono white</div></div>
+    <div class="card"><div class="stage blue"><svg width="44" height="44" viewBox="0 0 48 48"><g fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/><path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="4.2" fill="#FFFFFF"/></svg></div><div class="cap">On signal blue</div></div>
+  </div>
+</section>
+
+<!-- FAVICON -->
+<section>
+  <h2>App icon / favicon (mark saja)</h2>
+  <p>Di ukuran kecil, pakai mark dalam tile asphalt rounded. Wordmark dilepas di bawah ~24px.</p>
+  <div class="fav">
+    <div class="favbox"><div class="tile" style="width:72px;height:72px"><svg width="44" height="44" viewBox="0 0 48 48"><g fill="none" stroke="#F4F5F3" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/><path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="4.6" fill="#2F6BFF"/></svg></div><div class="t">64px</div></div>
+    <div class="favbox"><div class="tile" style="width:40px;height:40px"><svg width="26" height="26" viewBox="0 0 48 48"><g fill="none" stroke="#F4F5F3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/><path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="5" fill="#2F6BFF"/></svg></div><div class="t">32px</div></div>
+    <div class="favbox"><div class="tile" style="width:24px;height:24px"><svg width="16" height="16" viewBox="0 0 48 48"><g fill="none" stroke="#F4F5F3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24 H20"/><path d="M22 14 Q30 14 30 24"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="6" fill="#2F6BFF"/></svg></div><div class="t">16px (simplified)</div></div>
+  </div>
+</section>
+
+<!-- CLEARSPACE + MINSIZE -->
+<section>
+  <h2>Clearspace & ukuran minimum</h2>
+  <div class="grid2">
+    <div class="card"><div class="stage" style="background:#eef0ee">
+      <div style="border:1px dashed #b7bbb5;padding:24px;border-radius:8px"><div class="row"><svg width="40" height="40" viewBox="0 0 48 48"><g fill="none" stroke="#0E1116" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/><path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="4.2" fill="#2F6BFF"/></svg><span class="wm" style="font-size:23px">Meshwork</span></div></div>
+    </div><div class="cap">Clearspace = tinggi mark (1x) di semua sisi</div></div>
+    <div class="card"><div class="stage"><div class="row"><svg width="22" height="22" viewBox="0 0 48 48"><g fill="none" stroke="#0E1116" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 H22"/><path d="M8 24 H20"/><path d="M8 34 H22"/><path d="M22 14 Q30 14 30 24"/><path d="M20 24 H30"/><path d="M22 34 Q30 34 30 24"/><path d="M30 24 H42"/></g><circle cx="30" cy="24" r="4.2" fill="#2F6BFF"/></svg><span class="wm" style="font-size:13px">Meshwork</span></div></div><div class="cap">Min lockup 120px lebar · di bawah itu pakai mark saja</div></div>
+  </div>
+</section>
+
+<!-- DO / DONT -->
+<section>
+  <h2>Penggunaan</h2>
+  <div class="dos">
+    <div class="do"><b>Lakukan ✓</b>
+      <ul><li>Node settlement selalu biru signal (atau mono penuh)</li><li>Pertahankan tracking wordmark yang ketat</li><li>Pakai inverted di latar gelap</li><li>Jaga clearspace 1x tinggi mark</li></ul></div>
+    <div class="dont"><b>Jangan ✗</b>
+      <ul><li>Jangan kasih gradient atau bayangan</li><li>Jangan ganti font wordmark</li><li>Jangan regangkan/miringkan</li><li>Jangan ubah urutan/jumlah rel mark</li><li>Jangan taruh di latar berisik tanpa kontras</li></ul></div>
+  </div>
+</section>
+
+<footer>
+  Aset siap pakai: <code>design/logo/meshwork-lockup.svg</code> · <code>design/logo/meshwork-mark.svg</code><br>
+  Catatan produksi: untuk lockup, convert teks wordmark ke outline agar render identik di semua mesin. Mark sudah vektor murni.<br>
+  Meshwork logo system · Sauna · 14 Jun 2026 · buka di tab browser.
+</footer>
+
+</div>
+</body>
+</html>

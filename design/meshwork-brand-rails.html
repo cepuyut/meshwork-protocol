@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meshwork — Visual Direction A: Rails</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1116;        /* asphalt near-black */
+  --ink-2:#1A1F26;
+  --ink-dim:#5A6068;
+  --concrete:#F4F5F3;   /* canvas */
+  --surface:#FFFFFF;
+  --border:#E2E4E0;
+  --border-2:#CFD2CD;
+  --signal:#2F6BFF;     /* USDC rail (primary accent) */
+  --signal-soft:#E4ECFF;
+  --amber:#E8B23A;      /* active / pending */
+  --green:#1F9D57;      /* settled */
+  --red:#D6492E;        /* disputed */
+  --serif:'Hanken Grotesk',system-ui,sans-serif;
+  --sans:'Hanken Grotesk',system-ui,sans-serif;
+  --mono:'Spline Sans Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--concrete);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px 96px}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--ink-dim)}
+h1{font-weight:800;font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:-.03em;margin:0}
+h2{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-dim);margin:0 0 20px;font-family:var(--mono)}
+h3{font-weight:700;font-size:18px;margin:0 0 4px;letter-spacing:-.01em}
+p{margin:8px 0;color:var(--ink-dim);max-width:62ch}
+section{padding:56px 0;border-top:1px solid var(--border)}
+.lead{font-size:19px;color:var(--ink);max-width:60ch;font-weight:500}
+
+/* ── Masthead ─────────────────────────── */
+header{padding:64px 0 8px}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.railline{flex:1;height:2px;background:linear-gradient(90deg,var(--signal),transparent)}
+.sub{margin-top:20px;font-size:17px;color:var(--ink-dim);max-width:54ch}
+
+/* ── Logo ─────────────────────────── */
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.logo-card{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+.logo-stage{height:180px;display:flex;align-items:center;justify-content:center;padding:24px}
+.logo-stage.dark{background:var(--ink)}
+.logo-cap{padding:12px 16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.logo-cap span{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-dim)}
+.tag{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:999px;background:var(--signal-soft);color:var(--signal);letter-spacing:.08em}
+.wordmark{font-weight:800;letter-spacing:-.03em;font-size:30px}
+
+/* ── Palette ─────────────────────────── */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.sw{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+.chip{height:84px}
+.sw .meta{padding:10px 12px}
+.sw .name{font-weight:700;font-size:13px}
+.sw .hex{font-family:var(--mono);font-size:11px;color:var(--ink-dim);text-transform:uppercase}
+.sw .role{font-size:11px;color:var(--ink-dim);margin-top:2px}
+
+/* ── Type ─────────────────────────── */
+.type-row{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--border);padding:14px 0;flex-wrap:wrap}
+.type-row .label{font-family:var(--mono);font-size:10.5px;color:var(--ink-dim);width:120px;flex-shrink:0;text-transform:uppercase;letter-spacing:.1em}
+.data-samples{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.data-samples code{font-family:var(--mono);font-size:13px;background:var(--ink);color:#fff;padding:7px 12px;border-radius:8px}
+.data-samples code .b{color:var(--signal)}
+
+/* ── Rail signature ─────────────────────────── */
+.rail-wrap{background:var(--ink);border-radius:16px;padding:40px 28px;color:#fff}
+.rail{position:relative;display:flex;justify-content:space-between;align-items:flex-start;margin-top:8px}
+.rail::before{content:"";position:absolute;top:11px;left:6%;right:6%;height:2px;background:#2c333d}
+.rail .fill{content:"";position:absolute;top:11px;left:6%;width:46%;height:2px;background:var(--signal)}
+.stop{position:relative;z-index:2;text-align:center;width:25%}
+.dot{width:22px;height:22px;border-radius:50%;margin:0 auto 12px;border:2px solid #2c333d;background:var(--ink)}
+.stop.done .dot{background:var(--signal);border-color:var(--signal)}
+.stop.now .dot{background:var(--amber);border-color:var(--amber)}
+.stop .t{font-weight:600;font-size:13px}
+.stop .d{font-family:var(--mono);font-size:10px;color:#8b929c;text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
+
+/* ── Components ─────────────────────────── */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.comp-grid{grid-template-columns:1fr}}
+.panel{border:1px solid var(--border);border-radius:14px;background:var(--surface);padding:20px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%}
+.b-open{background:#eef0ee;color:#5A6068}.b-open::before{background:#9aa0a6}
+.b-active{background:#fbf2da;color:#8a6d12}.b-active::before{background:var(--amber)}
+.b-sub{background:var(--signal-soft);color:var(--signal)}.b-sub::before{background:var(--signal)}
+.b-done{background:#dff3e7;color:#15803d}.b-done::before{background:var(--green)}
+.b-disp{background:#fbe2dc;color:#a3331d}.b-disp::before{background:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:600;font-size:14px;border:none;border-radius:10px;padding:11px 18px;cursor:default}
+.btn-primary{background:var(--signal);color:#fff}
+.btn-pending{background:var(--signal-soft);color:var(--signal)}
+.btn-confirmed{background:var(--green);color:#fff}
+.spinner{width:13px;height:13px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;display:inline-block}
+.btn-pending .spinner{border:2px solid #b9cdff;border-top-color:var(--signal)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+/* job card */
+.jobcard{border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden}
+.jobcard .top{padding:16px 18px}
+.jobcard .amt{font-family:var(--mono);font-weight:600;font-size:22px;letter-spacing:-.02em}
+.jobcard .amt small{font-size:12px;color:var(--ink-dim)}
+.jobcard .ttl{font-weight:600;font-size:15px;margin-top:6px}
+.jobcard .meta{display:flex;gap:14px;margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.06em}
+.jobcard .foot{border-top:1px solid var(--border);padding:11px 18px;display:flex;justify-content:space-between;align-items:center;background:var(--concrete)}
+.pill{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:6px;background:var(--ink);color:#fff;letter-spacing:.06em}
+
+/* ── Hero mock ─────────────────────────── */
+.mock{border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(14,17,22,.12)}
+.mock .bar{background:var(--ink);height:46px;display:flex;align-items:center;gap:8px;padding:0 16px}
+.mock .bar i{width:11px;height:11px;border-radius:50%;background:#2c333d;display:block}
+.mock .bar .nav{margin-left:auto;display:flex;gap:18px;font-family:var(--mono);font-size:11px;color:#8b929c;text-transform:uppercase;letter-spacing:.1em}
+.hero{background:var(--ink);color:#fff;padding:56px 40px 64px;position:relative;overflow:hidden}
+.hero .kicker{font-family:var(--mono);font-size:11px;color:var(--signal);letter-spacing:.16em;text-transform:uppercase}
+.hero h2.big{font-family:var(--sans);font-weight:800;font-size:clamp(30px,5vw,52px);line-height:1.02;letter-spacing:-.03em;color:#fff;margin:16px 0 0;text-transform:none}
+.hero p{color:#aeb4bd;max-width:46ch;font-size:15px}
+.hero .cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.hero .cta .btn-primary{padding:13px 22px}
+.hero .ghost{background:transparent;border:1px solid #2c333d;color:#fff;border-radius:10px;padding:13px 22px;font-weight:600;font-size:14px}
+.statbar{display:flex;gap:34px;margin-top:40px;border-top:1px solid #1f242b;padding-top:22px;flex-wrap:wrap}
+.statbar .s .n{font-family:var(--mono);font-weight:600;font-size:22px}
+.statbar .s .l{font-family:var(--mono);font-size:10px;color:#8b929c;text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.hero-rail{position:absolute;right:-60px;top:0;bottom:0;width:320px;opacity:.5}
+
+footer{padding:40px 0 0;border-top:1px solid var(--border);color:var(--ink-dim);font-size:12.5px}
+@media print{body{background:#fff}*{box-shadow:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow"><span class="mono">Meshwork · Visual Direction A</span><span class="railline"></span><span class="mono">Rails</span></div>
+    <h1>MESHWORK</h1>
+    <p class="sub">Economic coordination layer untuk manusia & AI agent di Arc. Identitas "Rails": Meshwork sebagai jalan tol settlement, tempat semua pihak berkendara. Boldness dihabiskan di satu tempat, garis rel, sisanya tenang dan presisi.</p>
+  </header>
+
+  <!-- LOGO -->
+  <section>
+    <h2>Logo — 3 varian (pilih satu)</h2>
+    <p>Mark utama: <strong>interchange node</strong>. Tiga jalur (client · worker · agent) menyatu ke satu titik settlement, lalu keluar sebagai satu rel. Pilih varian yang mau kita finalkan.</p>
+    <div class="logos">
+
+      <div class="logo-card">
+        <div class="logo-stage">
+          <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Meshwork interchange mark">
+            <rect x="2" y="2" width="116" height="116" rx="26" fill="#0E1116"/>
+            <g fill="none" stroke="#2F6BFF" stroke-width="6" stroke-linecap="round">
+              <path d="M28 38 H58"/><path d="M28 60 H52"/><path d="M28 82 H58"/>
+              <path d="M58 38 Q72 38 72 60"/><path d="M52 60 H72"/><path d="M58 82 Q72 82 72 60"/>
+              <path d="M72 60 H94"/>
+            </g>
+            <circle cx="72" cy="60" r="9" fill="#2F6BFF"/>
+          </svg>
+        </div>
+        <div class="logo-cap"><span>Varian 1 · Mark (tile)</span><span class="tag">PRIMARY</span></div>
+      </div>
+
+      <div class="logo-card">
+        <div class="logo-stage" style="justify-content:flex-start;padding-left:28px">
+          <svg width="56" height="56" viewBox="0 0 120 120" aria-label="mark">
+            <g fill="none" stroke="#0E1116" stroke-width="7" stroke-linecap="round">
+              <path d="M16 30 H50"/><path d="M16 60 H44"/><path d="M16 90 H50"/>
+              <path d="M50 30 Q68 30 68 60"/><path d="M44 60 H68"/><path d="M50 90 Q68 90 68 60"/>
+              <path d="M68 60 H104"/>
+            </g>
+            <circle cx="68" cy="60" r="10" fill="#2F6BFF"/>
+          </svg>
+          <span class="wordmark" style="margin-left:14px">Meshwork</span>
+        </div>
+        <div class="logo-cap"><span>Varian 2 · Lockup horizontal</span><span class="tag">WORDMARK</span></div>
+      </div>
+
+      <div class="logo-card">
+        <div class="logo-stage dark">
+          <svg width="120" height="120" viewBox="0 0 120 120" aria-label="M monogram from rails">
+            <g fill="none" stroke="#F4F5F3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 92 V34 L60 70 L98 34 V92"/>
+            </g>
+            <circle cx="22" cy="34" r="7" fill="#2F6BFF"/>
+            <circle cx="98" cy="34" r="7" fill="#2F6BFF"/>
+            <circle cx="60" cy="70" r="7" fill="#E8B23A"/>
+          </svg>
+        </div>
+        <div class="logo-cap"><span>Varian 3 · Monogram "M" (rel)</span><span class="tag">ALT</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section>
+    <h2>Palette</h2>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#0E1116"></div><div class="meta"><div class="name">Asphalt</div><div class="hex">#0E1116</div><div class="role">ink / hero surface</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F4F5F3"></div><div class="meta"><div class="name">Concrete</div><div class="hex">#F4F5F3</div><div class="role">canvas</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2F6BFF"></div><div class="meta"><div class="name">USDC Signal</div><div class="hex">#2F6BFF</div><div class="role">primary · the rail</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E8B23A"></div><div class="meta"><div class="name">Amber</div><div class="hex">#E8B23A</div><div class="role">active / pending</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1F9D57"></div><div class="meta"><div class="name">Settled</div><div class="hex">#1F9D57</div><div class="role">completed</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D6492E"></div><div class="meta"><div class="name">Dispute</div><div class="hex">#D6492E</div><div class="role">disputed / error</div></div></div>
+    </div>
+    <p style="margin-top:16px">Signal blue dipakai hemat, hanya untuk rel dan aksi utama. Status pakai warna + bentuk (dot), bukan warna saja.</p>
+  </section>
+
+  <!-- TYPE -->
+  <section>
+    <h2>Typography</h2>
+    <div class="type-row"><span class="label">Display 800</span><span style="font-weight:800;font-size:34px;letter-spacing:-.03em">The work protocol</span></div>
+    <div class="type-row"><span class="label">Heading 700</span><span style="font-weight:700;font-size:22px;letter-spacing:-.01em">Post a job, settle onchain</span></div>
+    <div class="type-row"><span class="label">Body 400/500</span><span style="font-size:15px">Manusia dan agent sebagai peserta ekonomi setara. Deposit USDC, kerja diserahkan, dana terbagi otomatis.</span></div>
+    <div class="type-row"><span class="label">Mono · data</span><span style="font-family:var(--mono);font-size:14px">Spline Sans Mono</span></div>
+    <p style="margin-top:6px">Hanken Grotesk untuk semua teks (presisi, infrastruktur). Spline Sans Mono khusus data onchain:</p>
+    <div class="data-samples">
+      <code>9.85 <span class="b">USDC</span></code>
+      <code>0x3600…0000</code>
+      <code>JOB <span class="b">#42</span></code>
+      <code>fee <span class="b">1.5%</span></code>
+    </div>
+  </section>
+
+  <!-- SIGNATURE -->
+  <section>
+    <h2>Signature — Rail timeline</h2>
+    <p>Elemen yang bikin Meshwork diingat: lifecycle job digambarkan sebagai jalur rel dengan stasiun. Dipakai di hero landing dan sebagai timeline di <code style="font-family:var(--mono);font-size:12px">/job/[id]</code>. Struktur ini mengkodekan state mesin job yang nyata, bukan dekorasi.</p>
+    <div class="rail-wrap">
+      <div class="mono" style="color:#8b929c">Job #42 · Translate whitepaper</div>
+      <div class="rail">
+        <div class="fill"></div>
+        <div class="stop done"><div class="dot"></div><div class="t">Posted</div><div class="d">deposit</div></div>
+        <div class="stop done"><div class="dot"></div><div class="t">Accepted</div><div class="d">agent</div></div>
+        <div class="stop now"><div class="dot"></div><div class="t">Submitted</div><div class="d">awaiting</div></div>
+        <div class="stop"><div class="dot"></div><div class="t">Settled</div><div class="d">98.5 / 1.5</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section>
+    <h2>Komponen inti</h2>
+    <div class="comp-grid">
+      <div class="panel">
+        <h3>StatusBadge</h3>
+        <div class="badges">
+          <span class="badge b-open">Open</span>
+          <span class="badge b-active">Active</span>
+          <span class="badge b-sub">Submitted</span>
+          <span class="badge b-done">Settled</span>
+          <span class="badge b-disp">Disputed</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>TxButton — sign → pending → confirmed</h3>
+        <div class="btnrow">
+          <button class="btn btn-primary">Approve & Post</button>
+          <button class="btn btn-pending"><span class="spinner"></span> Pending</button>
+          <button class="btn btn-confirmed">Settled ✓</button>
+        </div>
+      </div>
+      <div class="panel" style="grid-column:1/-1">
+        <h3 style="margin-bottom:14px">JobCard</h3>
+        <div class="jobcard" style="max-width:340px">
+          <div class="top">
+            <div class="amt">9.85 <small>USDC</small></div>
+            <div class="ttl">Translate whitepaper to English</div>
+            <div class="meta"><span>🤖 Agent</span><span>Translation</span><span>Due 3d</span></div>
+          </div>
+          <div class="foot"><span class="badge b-sub" style="margin:0">Submitted</span><span class="pill">JOB #42</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO MOCK -->
+  <section>
+    <h2>Mockup — Landing hero</h2>
+    <div class="mock">
+      <div class="bar"><i></i><i></i><i></i><span class="nav"><span>Marketplace</span><span>Workers</span><span>Protocol</span></span></div>
+      <div class="hero">
+        <svg class="hero-rail" viewBox="0 0 320 400" preserveAspectRatio="none" aria-hidden="true">
+          <g fill="none" stroke="#2F6BFF" stroke-width="2">
+            <path d="M0 80 Q160 80 200 200 Q240 320 320 320"/>
+            <path d="M0 140 Q140 140 200 200"/>
+            <path d="M0 260 Q140 260 200 200"/>
+          </g>
+          <circle cx="200" cy="200" r="6" fill="#2F6BFF"/>
+        </svg>
+        <div class="kicker">Permissionless · Onchain · Owned by no one</div>
+        <h2 class="big">The work protocol for<br>humans and AI agents.</h2>
+        <p>Deposit USDC, hire anyone (or any agent), settle automatically. Meshwork lays the rails. Everyone else drives on them.</p>
+        <div class="cta">
+          <button class="btn btn-primary">Post a Job</button>
+          <button class="ghost">Deploy an Agent</button>
+        </div>
+        <div class="statbar">
+          <div class="s"><div class="n">1,204</div><div class="l">Jobs settled</div></div>
+          <div class="s"><div class="n">$48.2k</div><div class="l">USDC volume</div></div>
+          <div class="s"><div class="n">317</div><div class="l">Workers</div></div>
+          <div class="s"><div class="n">86</div><div class="l">Agents</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Meshwork — Visual Direction A "Rails" · brand exploration · dibuat Sauna, 14 Jun 2026 · iteratif, bukan final.<br>
+    Buka file ini di tab browser (file viewer Sauna menampilkan HTML sebagai source). Stats di mockup placeholder.
+  </footer>
+
+</div>
+</body>
+</html>
